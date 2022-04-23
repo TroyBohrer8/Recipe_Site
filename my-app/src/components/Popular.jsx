@@ -1,9 +1,18 @@
+import { useEffect } from "react";
+
 function Popular() {
-  return (
-    <div>
-      Popular
-    </div>
-  )
+  useEffect(() => {
+    getPopular();
+  }, []);
+
+  const getPopular = async () => {
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+    );
+    const data = await api.json();
+  };
+
+  return <div>Popular</div>;
 }
 
-export default Popular
+export default Popular;
